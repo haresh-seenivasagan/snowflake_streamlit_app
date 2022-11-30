@@ -13,6 +13,8 @@ import pandas as pd
 fruits_list = pd.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
 fruits_list.set_index('Fruit',inplace=True)
 
-streamlit.multiselect("pick some frutis : " , list(fruits_list.index), ['Avocado','Strawberries'])
+fruits_selected = streamlit.multiselect("pick some frutis : " , list(fruits_list.index), ['Avocado','Strawberries'])
 
-streamlit.dataframe(fruits_list)
+
+
+streamlit.dataframe(fruits_list.loc[fruits_selected])
